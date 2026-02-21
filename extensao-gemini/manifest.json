@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Ponte Gemini",
+  "version": "1.0",
+  "description": "Interface de automação para Google Gemini baseada em sessão web.",
+  "permissions": [
+    "sidePanel", 
+    "tabs", 
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://gemini.google.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "panel.html"
+  },
+  "action": {
+    "default_title": "Abrir Ponte Gemini"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://gemini.google.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
